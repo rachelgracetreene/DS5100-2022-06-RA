@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "rg5xm_HW02.py", line 13, in <module>
+    gradebook['Jeff']
+KeyError: 'Jeff'
