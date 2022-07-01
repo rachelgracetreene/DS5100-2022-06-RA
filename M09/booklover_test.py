@@ -10,7 +10,6 @@ class BookLoverTestSuite(unittest.TestCase):
         actual = booklover1.book_list.to_dict()
         
         expected = {'book_name':{0: 'Harry Potter'}, 'book_rating':{0: 5}}
-        #self.book_list['book_name'].unique()
         self.assertEqual(actual, expected)
         
     def test_2_add_book(self):
