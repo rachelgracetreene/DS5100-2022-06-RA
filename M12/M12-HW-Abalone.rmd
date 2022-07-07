@@ -38,7 +38,7 @@ library(tidyverse)
 ```
 
 ```{r}
-dataset <- read.csv("https://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data")
+dataset <- read.csv("https://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data", header=FALSE)
 ```
 
 
@@ -70,7 +70,7 @@ rings
 
 ```{r}
 # CODE HERE
-max(dataset$X15)
+max(dataset$V9)
 ```
 
 ## Q3
@@ -86,7 +86,7 @@ gender is infant, and print the number of records.
 ```{r}
 # CODE HERE
 records <- dataset %>%
-  filter(M =="I")
+  filter(V1 =="I")
 nrow(records)
 ```
 
@@ -100,7 +100,7 @@ gender is infant or male, and print the number of records.
 ```{r}
 # CODE HERE
 records2 <- dataset %>%
-  filter(M == "I" | M == "M")
+  filter(V1 == "I" | V1 == "M")
 nrow(records2)
 ```
 
@@ -115,7 +115,7 @@ Print the result.
 
 ```{r}
 # CODE HERE
-table(dataset$M)
+table(dataset$V1)
 ```
 
 ## Q6
@@ -132,8 +132,8 @@ Requirements: use the `%>%` operator to chain commands, and the
 ```{r}
 # CODE HERE
 dataset %>%
-  group_by(M) %>%
-  summarize(mean_val=mean(X0.455))
+  group_by(V1) %>%
+  summarize(mean_val=mean(V2))
 ```
 
 # Q7
@@ -148,8 +148,8 @@ Requirements: use the `%>%` operator to chain commands.
 ```{r}
 # CODE HERE
 dataset %>%
-  filter(M == "M") %>%
-  summarize(median=median(X0.455))
+  filter(V1 == "M") %>%
+  summarize(median=median(V2))
 ```
 
 # Submission
