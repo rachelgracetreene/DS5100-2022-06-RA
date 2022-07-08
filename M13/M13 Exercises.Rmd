@@ -1,0 +1,100 @@
+---
+title: "M13 Exercises"
+output: html_document
+date: '2022-07-08'
+---
+
+Rachel Grace
+
+Exercise 13.1
+
+```{r}
+library(tidyverse)
+mpg %>% ggplot()
+```
+
+Exercise 13.2
+
+```{r}
+plot(mpg$hwy, mpg$cyl)
+```
+
+13.3
+
+```{r}
+mpg %>%
+  ggplot(mapping = aes(x = class, y = drv)) + geom_point()
+```
+
+13.4
+
+```{r}
+x <- seq(-6*pi, 6*pi, length.out = 100)
+y <- sin(x)
+ggplot(mapping = aes(x = x, y = y)) + geom_line()
+```
+
+```{r}
+tibble(x, y)
+```
+
+13.5
+
+```{r}
+cars %>%
+  ggplot(mapping = aes(x = speed, y = dist)) +
+  geom_point(mapping = aes(color = dist > 80)) +
+  scale_color_manual(values = c("black", "red"))
+```
+
+13.6
+
+```{r}
+cars %>%
+  ggplot(mapping = aes(x = speed, y = dist)) +
+  geom_point(mapping = aes(color = dist > 80)) +
+  geom_smooth(method = lm) +
+  scale_color_manual(values = c("black", "red"))
+```
+
+13.10
+
+```{r}
+cars %>%
+  ggplot(aes(x = speed)) + geom_histogram(bins = 10)
+```
+
+```{r}
+cars %>%
+  ggplot(aes(x = dist)) + geom_histogram(bins = 10)
+
+```
+
+13.11
+
+```{r}
+mpg %>%
+  ggplot(aes(x = hwy, y = cty)) + geom_point() + facet_grid(drv ~ cyl)
+```
+
+13.12
+
+```{r}
+iris %>%
+  ggplot(aes(x = Sepal.Length, y = Sepal.Width)) + geom_density2d(aes(fill = Species, color = Species), show.legend = TRUE) + labs(title = 'IRIS') + theme_light()
+```
+
+13.13
+
+```{r}
+iris %>%
+  mutate(Species = 'ALL') %>%
+  bind_rows(iris) %>%
+  ggplot(aes(x=Petal.Length, y=Petal.Width, color = Species)) +
+  geom_point() +
+  geom_smooth() +
+  xlab('Petal Length') +
+  ylab('Petal Width') +
+  facet_wrap(~Species, scales = 'free') +
+  theme_bw()
+```
